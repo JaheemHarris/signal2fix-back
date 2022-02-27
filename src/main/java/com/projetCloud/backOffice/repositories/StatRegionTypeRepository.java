@@ -12,7 +12,7 @@ import com.projetCloud.backOffice.models.StatRegionType;
 @Repository
 public interface StatRegionTypeRepository extends JpaRepository<StatRegionType,Long>{
 	
-	@Query(value="SELECT * FROM view_stat_region_type WHERE idregion is not null AND ( :idRegion is null or idregion = CAST(CAST(:idRegion AS VARCHAR) as INTEGER)) AND ( :idType is null or idtype = CAST(CAST(:idType AS VARCHAR) as INTEGER))",nativeQuery=true)
+	@Query(value="SELECT * FROM view_stat_region_type WHERE ( :idRegion is null or idregion = CAST(CAST(:idRegion AS VARCHAR) as INTEGER)) AND ( :idType is null or idtype = CAST(CAST(:idType AS VARCHAR) as INTEGER))",nativeQuery=true)
 	public List<StatRegionType> findByFilters(@Param("idRegion") final Long idRegion,@Param("idType") final Long idType);
 
 }

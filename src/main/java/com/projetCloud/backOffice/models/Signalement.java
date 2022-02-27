@@ -16,6 +16,7 @@ import lombok.Data;
 
 @Data
 @Entity
+@Immutable
 @Table(name="signalement")
 public class Signalement {
 	@Id

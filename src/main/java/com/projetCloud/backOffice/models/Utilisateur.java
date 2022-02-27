@@ -1,16 +1,20 @@
 package com.projetCloud.backOffice.models;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.Immutable;
 
 import lombok.Data;
 
-import java.util.Set;
-
 @Data
 @Entity
-@Table(name="auth_user")
+@Immutable
+@Table(name="utilisateur")
 public class Utilisateur {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -21,10 +25,4 @@ public class Utilisateur {
 	
 	@Column(name="motdepasse")
 	private String motDePasse;
-
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name = "user_role",
-			joinColumns = @JoinColumn(name = "iduser",referencedColumnName = "id"),
-			inverseJoinColumns = @JoinColumn(name = "idrole",referencedColumnName = "id"))
-	private Set<Role> roles;
 }

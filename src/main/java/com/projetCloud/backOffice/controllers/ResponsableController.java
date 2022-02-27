@@ -1,9 +1,6 @@
 package com.projetCloud.backOffice.controllers;
 
 import java.util.List;
-
-import com.projetCloud.backOffice.models.Utilisateur;
-import com.projetCloud.backOffice.services.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -22,7 +19,7 @@ import com.projetCloud.backOffice.services.ResponsableService;
 @Controller
 public class ResponsableController {
 	@Autowired
-	private UtilisateurService utilisateurService;
+	private ResponsableService responsableService;
 	
 	@Autowired
 	private RegionService regionService;
@@ -31,7 +28,7 @@ public class ResponsableController {
 	public ModelAndView ajoutResponsable(Authentication authentication) {
 		ModelAndView modelView = new ModelAndView();
 		List<Region> regions = regionService.getRegions();
-		Utilisateur responsable = new Utilisateur();
+		Responsable responsable = new Responsable();
 		modelView.addObject("nom",authentication.getName());
 		modelView.addObject("regions", regions);
 		modelView.addObject("responsable", responsable);
@@ -40,15 +37,15 @@ public class ResponsableController {
 	}
 	
 	@PostMapping("/ajoutResponsable")
-	public String createResponsable(@ModelAttribute Utilisateur responsable,Model model) {
-		Utilisateur nouveauResponsable = utilisateurService.saveResponsable(responsable);
+	public String createResponsable(@ModelAttribute Responsable responsable,Model model) {
+		Responsable  nouveauResponsable = responsableService.saveResponsable(responsable);
 		model.addAttribute("responsable",nouveauResponsable);
 		return "redirect:ajoutResponsable";
 	}
 	
 	@GetMapping("/destituer")
 	public String deleteResponsable(@RequestParam("responsable") final Long id) {
-		utilisateurService.deleteResponsable(id);
+		responsableService.deleteResponsable(id);
 		return "redirect:/listeResponsable";
 	}
 }

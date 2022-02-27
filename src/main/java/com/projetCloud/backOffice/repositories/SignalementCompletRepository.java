@@ -1,7 +1,6 @@
 package com.projetCloud.backOffice.repositories;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -18,10 +17,7 @@ public interface SignalementCompletRepository extends JpaRepository<SignalementC
 	
 	@Query(value="SELECT * FROM view_signalements_non_affectes WHERE ( :idRegion is null or idregion = CAST(CAST(:idRegion AS VARCHAR) as INTEGER)) AND ( :idType is null or idtype = CAST(CAST(:idType AS VARCHAR) as INTEGER))",nativeQuery=true)
 	List<SignalementComplet> findByRegionIsNull(@Param("idRegion") final Long idRegion,@Param("idType") final Long idType);
-
-	@Query(value="SELECT * FROM view_signalements_non_affectes WHERE idsignalement = :id",nativeQuery = true)
-	Optional<SignalementComplet> findSignalementNonAffectesById(@Param("id") final Long id);
-
+	
 	@Query(value="SELECT * FROM view_signalementDetails WHERE idtype = ?1",nativeQuery=true)
 	List<SignalementComplet> findByType(final Long idType);
 	

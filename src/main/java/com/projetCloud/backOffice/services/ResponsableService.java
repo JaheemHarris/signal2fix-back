@@ -8,10 +8,9 @@ import org.springframework.stereotype.Service;
 import com.projetCloud.backOffice.models.Responsable;
 import com.projetCloud.backOffice.repositories.ResponsableRepository;
 import lombok.Data;
-import org.springframework.transaction.annotation.Transactional;
 
+@Data
 @Service
-@Transactional
 public class ResponsableService {
 
 	@Autowired

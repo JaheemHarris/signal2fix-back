@@ -12,6 +12,7 @@ import lombok.Data;
 
 @Data
 @Entity
+@Immutable
 @Table(name="typesignalement")
 public class TypeSignalement {
 	@Id

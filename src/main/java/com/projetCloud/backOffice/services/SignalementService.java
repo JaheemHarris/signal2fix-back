@@ -9,10 +9,9 @@ import com.projetCloud.backOffice.models.Signalement;
 import com.projetCloud.backOffice.repositories.SignalementRepository;
 
 import lombok.Data;
-import org.springframework.transaction.annotation.Transactional;
 
+@Data
 @Service
-@Transactional
 public class SignalementService {
 	
 	@Autowired
@@ -52,7 +51,7 @@ public class SignalementService {
 				currentSignal.setLatitude(signalement.getLatitude());
 			if(signalement.getLongitude() != null)
 				currentSignal.setLongitude(signalement.getLongitude());
-			updatedSignalement = this.saveSignalement(currentSignal);
+			updatedSignalement = signalementRepository.save(currentSignal);
 		}
 		return updatedSignalement;
 	}

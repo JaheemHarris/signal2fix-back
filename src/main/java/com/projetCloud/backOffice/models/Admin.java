@@ -14,18 +14,17 @@ import lombok.Data;
 @Data
 @Entity
 @Immutable
-@Table(name="responsable")
-public class Responsable {
+@Table(name="admin")
+public class Admin {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name="idregion")
-	private Long idRegion;
-	private String nom;
-	private String prenom;
+	@Column(name="nom")
+	private String username;
+	
 	private String email;
 	
 	@Column(name="motdepasse")
-	private String motDePasse;
+	private String password;
 }
