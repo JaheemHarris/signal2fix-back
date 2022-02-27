@@ -1,16 +1,20 @@
 package com.projetCloud.backOffice.services;
 
+import java.util.List;
 import java.util.Optional;
 
+import com.projetCloud.backOffice.models.Region;
+import com.projetCloud.backOffice.models.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.projetCloud.backOffice.models.Utilisateur;
 import com.projetCloud.backOffice.repositories.UtilisateurRepository;
 
 import lombok.Data;
+import org.springframework.transaction.annotation.Transactional;
 
-@Data
 @Service
+@Transactional
 public class UtilisateurService {
 	@Autowired
 	private UtilisateurRepository utilisateurRepository;
@@ -44,5 +48,28 @@ public class UtilisateurService {
 			updatedUtilisateur = utilisateurRepository.save(currentUser);
 		}
 		return updatedUtilisateur;
+	}
+
+	public List<Utilisateur> getAllResponsables(){
+		return utilisateurRepository.findByRole(new Role(Long.valueOf(2),"CHIEF"));
+	}
+
+	public Utilisateur getResponsable(Long id){
+		Optional<Utilisateur> optUser = utilisateurRepository.findByIdAndRole(id,new Role(Long.valueOf(2),"CHIEF"));
+		Utilisateur utilisateur = null;
+		if(optUser.isPresent())
+			utilisateur = optUser.get();
+		return utilisateur;
+	}
+
+	public void deleteResponsable(Long id){
+		utilisateurRepository.deleteByIdAndRole(id, new Role(Long.valueOf(2),"CHIEF"));
+	}
+
+	public Utilisateur saveResponsable(Utilisateur responsable){
+		Utilisateur savedResponsable = null;
+		responsable.setRole(new Role(Long.valueOf(2),"CHIEF"));
+		savedResponsable = utilisateurRepository.save(responsable);
+		return savedResponsable;
 	}
 }

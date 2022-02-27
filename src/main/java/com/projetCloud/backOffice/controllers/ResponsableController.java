@@ -12,40 +12,38 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.projetCloud.backOffice.models.Region;
-import com.projetCloud.backOffice.models.Responsable;
 import com.projetCloud.backOffice.services.RegionService;
-import com.projetCloud.backOffice.services.ResponsableService;
 
 @Controller
 public class ResponsableController {
-	@Autowired
-	private ResponsableService responsableService;
-	
-	@Autowired
-	private RegionService regionService;
-	
-	@GetMapping("/ajoutResponsable")
-	public ModelAndView ajoutResponsable(Authentication authentication) {
-		ModelAndView modelView = new ModelAndView();
-		List<Region> regions = regionService.getRegions();
-		Responsable responsable = new Responsable();
-		modelView.addObject("nom",authentication.getName());
-		modelView.addObject("regions", regions);
-		modelView.addObject("responsable", responsable);
-		modelView.setViewName("ajoutResponsable");
-		return modelView;
-	}
-	
-	@PostMapping("/ajoutResponsable")
-	public String createResponsable(@ModelAttribute Responsable responsable,Model model) {
-		Responsable  nouveauResponsable = responsableService.saveResponsable(responsable);
-		model.addAttribute("responsable",nouveauResponsable);
-		return "redirect:ajoutResponsable";
-	}
-	
-	@GetMapping("/destituer")
-	public String deleteResponsable(@RequestParam("responsable") final Long id) {
-		responsableService.deleteResponsable(id);
-		return "redirect:/listeResponsable";
-	}
+//	@Autowired
+//	private ResponsableService responsableService;
+//
+//	@Autowired
+//	private RegionService regionService;
+//
+//	@GetMapping("/ajoutResponsable")
+//	public ModelAndView ajoutResponsable(Authentication authentication) {
+//		ModelAndView modelView = new ModelAndView();
+//		List<Region> regions = regionService.getRegions();
+//		Responsable responsable = new Responsable();
+//		modelView.addObject("nom",authentication.getName());
+//		modelView.addObject("regions", regions);
+//		modelView.addObject("responsable", responsable);
+//		modelView.setViewName("ajoutResponsable");
+//		return modelView;
+//	}
+//
+//	@PostMapping("/ajoutResponsable")
+//	public String createResponsable(@ModelAttribute Responsable responsable,Model model) {
+//		Responsable  nouveauResponsable = responsableService.saveResponsable(responsable);
+//		model.addAttribute("responsable",nouveauResponsable);
+//		return "redirect:ajoutResponsable";
+//	}
+//
+//	@GetMapping("/destituer")
+//	public String deleteResponsable(@RequestParam("responsable") final Long id) {
+//		responsableService.deleteResponsable(id);
+//		return "redirect:/listeResponsable";
+//	}
 }

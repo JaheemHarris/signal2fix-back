@@ -1,22 +1,17 @@
 package com.projetCloud.backOffice.models;
 
 import java.sql.Timestamp;
+import java.time.LocalTime;
+import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.Immutable;
 
 import lombok.Data;
 
 @Data
 @Entity
-@Immutable
 @Table(name="signalement")
 public class Signalement {
 	@Id
@@ -29,7 +24,7 @@ public class Signalement {
 	@Column(name="idregion")
 	private Long idRegion;
 	
-	@Column(name="idutilisateur")
+	@Column(name="iduser")
 	private Long idUtilisateur;
 	
 	@Column(name="idstatus")
@@ -37,11 +32,13 @@ public class Signalement {
 	
 	private String description;
 	
-	private String image;
-	
 	@CreationTimestamp
+	@Temporal(TemporalType.DATE)
 	@Column(name="datesignalement")
-	private Timestamp dateSignalement;
+	private Date dateSignalement;
+
+	@Column(name="heuresignalement")
+	private LocalTime heureSignalement;
 	
 	private Double latitude;
 	

@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "auth_role")
 public class Role {
 

@@ -7,15 +7,17 @@ import org.springframework.stereotype.Service;
 
 import com.projetCloud.backOffice.models.StatPourcentageEffectue;
 import com.projetCloud.backOffice.repositories.StatEffectueRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class StatEffectueService {
 	
 	@Autowired
 	private StatEffectueRepository statEffectueRepository;
 	
 	public List<StatPourcentageEffectue> listeStatEffectue(){
-		return statEffectueRepository.findAll();
+		return statEffectueRepository.findRegionNotNull();
 	}
 	
 	public List<StatPourcentageEffectue> listeStatEffectueByRegion(final Long idRegion){

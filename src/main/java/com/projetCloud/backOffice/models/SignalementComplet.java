@@ -1,11 +1,10 @@
 package com.projetCloud.backOffice.models;
 
 import java.sql.Timestamp;
+import java.time.LocalTime;
+import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Immutable;
@@ -24,13 +23,15 @@ public class SignalementComplet {
 	
 	@Column(name="idtype")
 	private Long idType;
+
 	private String type;
 	
 	@Column(name="idregion")
 	private Long idRegion;
+
 	private String region;
 	
-	@Column(name="idutilisateur")
+	@Column(name="iduser")
 	private Long idUtilisateur;
 	
 	private String nom;
@@ -41,13 +42,17 @@ public class SignalementComplet {
 	private Long idStatus;
 	
 	private String status;
+
 	private String description;
-	private String image;
 	
-	@CreationTimestamp
+	@Temporal(TemporalType.DATE)
 	@Column(name="datesignalement")
-	private Timestamp dateSignalement;
+	private Date dateSignalement;
+
+	@Column(name = "heuresignalement")
+	private LocalTime heureSignalement;
 	
 	private Double latitude;
+
 	private Double longitude;
 }

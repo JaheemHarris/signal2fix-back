@@ -8,28 +8,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.projetCloud.backOffice.models.ResponsableRegion;
-import com.projetCloud.backOffice.services.ResponsableRegionServ;
 
 @Controller
 public class ResponsableRegionController {
 	
-	@Autowired
-	public ResponsableRegionServ responsableRegionServ;
-	
-	@GetMapping("/listeResponsable")
-	public ModelAndView listeResponsable() {
-		ModelAndView modelView = new ModelAndView();
-		List<ResponsableRegion> responsables = responsableRegionServ.getResponsableRegions();
-		modelView.addObject("responsables", responsables);
-		modelView.setViewName("listeResponsable");
-		return modelView;
-	}
-	
-	@GetMapping("ficheResponsable")
-	public String detailsResponsable(@RequestParam(name="responsable") final Long idResponsable,Model model) {
-		ResponsableRegion responsable = responsableRegionServ.getResponsableRegionByIdResponsable(idResponsable);
-		model.addAttribute("responsable", responsable);
-		return "ficheResponsable";
-	}
+//	@Autowired
+//	public ResponsableRegionServ responsableRegionServ;
+//
+//	@GetMapping("/listeResponsable")
+//	public ModelAndView listeResponsable() {
+//		ModelAndView modelView = new ModelAndView();
+//		List<ResponsableRegion> responsables = responsableRegionServ.getResponsableRegions();
+//		modelView.addObject("responsables", responsables);
+//		modelView.setViewName("listeResponsable");
+//		return modelView;
+//	}
+//
+//	@GetMapping("/ficheResponsable")
+//	public String detailsResponsable(@RequestParam(name="responsable") final Long idResponsable,Model model) {
+//		ResponsableRegion responsable = responsableRegionServ.getResponsableRegionByIdResponsable(idResponsable);
+//		model.addAttribute("responsable", responsable);
+//		return "ficheResponsable";
+//	}
 }

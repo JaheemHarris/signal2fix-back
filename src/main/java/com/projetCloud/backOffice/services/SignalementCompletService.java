@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.projetCloud.backOffice.models.SignalementComplet;
 import com.projetCloud.backOffice.repositories.SignalementCompletRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class SignalementCompletService {
 	
 	@Autowired
@@ -21,6 +23,14 @@ public class SignalementCompletService {
 	
 	public SignalementComplet getSignalementCompletById(final Long idSignalement) {
 		Optional<SignalementComplet> signalOpt = signalCompletRepo.findById(idSignalement);
+		SignalementComplet signalement = null;
+		if(signalOpt.isPresent())
+			signalement = signalOpt.get();
+		return signalement;
+	}
+
+	public SignalementComplet getSignalementNonAffectesById(final Long idSignalement) {
+		Optional<SignalementComplet> signalOpt = signalCompletRepo.findSignalementNonAffectesById(idSignalement);
 		SignalementComplet signalement = null;
 		if(signalOpt.isPresent())
 			signalement = signalOpt.get();

@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.projetCloud.backOffice.models.StatRegionStatus;
 import com.projetCloud.backOffice.repositories.StatRegionStatusRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class StatRegionStatusService {
 	
 	@Autowired

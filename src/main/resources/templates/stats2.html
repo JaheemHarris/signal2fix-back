@@ -204,7 +204,7 @@
                                                     <label for="status">Status:</label>
                                                     <select id="status" name="status">
                                                         <option disabled selected value>Tous</option>
-                                                        <option th:each="status : ${allStatus}" th:value="${status.id}" th:utext="${status.libelle}"></option>
+                                                        <option th:each="status : ${allStatus}" th:value="${status.id}" th:utext="${status.nom}"></option>
                                                     </select>
                                                 </div>
                                             </div>

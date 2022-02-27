@@ -192,11 +192,11 @@
                                     <img src="img/unknown-person-icon-4.jpg" class="rounded" alt="Photo du responsable">
                                 </div>
                                 <div class="col-md-4" th:object="${responsable}">
-                                    <p>Nom: <span th:utext="${responsable.nom}">Rakotomampionina</span></p>
-                                    <p>Prenom : <span th:utext="${responsable.prenom}">Hevitra Taingina</span></p>
-                                    <p>Région: <span th:utext="${responsable.region}">Bongolava</span></p>
-                                    <p>Email: <span th:utex="${responsable.email}"}>hevitra.taingina@gmail.com</span></p>
-                                    <a th:href="@{/destituer(responsable=${responsable.idResponsable})}" class="btn btn-primary form-control">Déstituer</a>
+                                    <p>Nom: <span th:utext="${responsable.nom}"></span></p>
+                                    <p>Prenom : <span th:utext="${responsable.prenom}"></span></p>
+                                    <p>Région: <span th:utext="${responsable.region.nom}"></span></p>
+                                    <p>Email: <span th:utext="${responsable.email}"}></span></p>
+                                    <a th:href="@{/destituer(responsable=${responsable.id})}" class="btn btn-primary form-control">Déstituer</a>
                                 </div>
                             </div>
                         </div>

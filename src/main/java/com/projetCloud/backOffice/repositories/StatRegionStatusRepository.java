@@ -12,6 +12,6 @@ import com.projetCloud.backOffice.models.StatRegionStatus;
 @Repository
 public interface StatRegionStatusRepository extends JpaRepository<StatRegionStatus,Long>{
 	
-	@Query(value="SELECT * FROM view_stat_region_status WHERE ( :idRegion is null or idregion = CAST(CAST(:idRegion AS VARCHAR) as INTEGER)) AND ( :idStatus is null or idstatus = CAST(CAST(:idStatus AS VARCHAR) as INTEGER))",nativeQuery=true)
+	@Query(value="SELECT * FROM view_stat_region_status WHERE idregion is not null AND ( :idRegion is null or idregion = CAST(CAST(:idRegion AS VARCHAR) as INTEGER)) AND ( :idStatus is null or idstatus = CAST(CAST(:idStatus AS VARCHAR) as INTEGER))",nativeQuery=true)
 	List<StatRegionStatus> findByFilters(@Param("idRegion") final Long idRegion,@Param("idStatus") final Long idStatus);
 }

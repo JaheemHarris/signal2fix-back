@@ -12,12 +12,13 @@ import lombok.Data;
 
 @Data
 @Entity
-@Immutable
 @Table(name="typesignalement")
 public class TypeSignalement {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+
 	private String type;
+
 	private String couleur;
 }

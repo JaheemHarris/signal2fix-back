@@ -197,9 +197,9 @@
                                     </thead>
                                     <tbody>
                                         <tr th:each="responsable : ${responsables}">
-                                            <td  th:text="${responsable.region}"></td>
+                                            <td  th:text="${responsable.region.nom}"></td>
                                             <td th:text="|${responsable.nom} ${responsable.prenom}|"></td>
-                                            <td><a th:href="@{/ficheResponsable(responsable=${responsable.idResponsable})}" class="btn btn-primary">Voir</a></td>
+                                            <td><a th:href="@{/ficheResponsable(responsable=${responsable.id})}" class="btn btn-primary">Voir</a></td>
                                         </tr>
                                     </tbody>
                                 </table>
